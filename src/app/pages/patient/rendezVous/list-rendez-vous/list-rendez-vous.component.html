@@ -1,0 +1,251 @@
+
+<div class="container card" style="margin-top: 15%" >
+  <div id="content" class="content p-0">
+    <div class="profile-header">
+      <div class="profile-header-cover"></div>
+
+      <div class="profile-header-content">
+        <div class="profile-header-img">
+          <img
+            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+            alt="" style="width: 100px; height: 100px"
+          />
+        </div>
+
+        <div class="profile-header-info">
+          <h2 class="m-t-sm text-bold"> {{ patient.prenom }}  {{ patient.nom }}</h2>
+          <p class="m-b-sm h3-text">profession:   {{ patient.profession }} </p>
+          <a  [routerLink]="['/patient/profil']" routerLinkActive="router-link-active"  class="btn btn-xs float-right btn-outline-primary mb-3">Profile</a>
+        </div>
+      </div>
+
+      <ul class="profile-header-tab nav nav-tabs">
+        <li class="nav-item">
+          <a href="#rendezVous" class="nav-link active" data-toggle="tab"
+            >Rendez-Vous</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#demanderRV" class="nav-link " data-toggle="tab"
+            >demandez rv</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#drv" class="nav-link" data-toggle="tab"
+            >demande rendez-Vous</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile-container">
+      <div class="row row-space-20">
+        <div class="col-md-10">
+          <div class="tab-content p-0">
+            <div class="tab-pane active show" id="rendezVous">
+                <div>
+                    <!-- <div class="row p-4 no-gutters align-items-center">
+                      <div class="col-sm-12 col-md-6"></div>
+                      <div class="col-sm-12 col-md-6">
+                        <ul class="list-inline dl mb-0 float-left float-md-right">
+                          <li class="list-inline-item text-info mr-3">
+                            <a
+                              id="demanderRV-tab"
+                              data-toggle="tab"
+                              aria-controls="demanderRV"
+                              href="#demanderRV"
+                              role="tab"
+                              aria-selected="false"
+                            >
+                              <button class="btn btn-circle btn-success text-white">
+                                <i class="fa fa-plus"></i>
+                                <span class="ml-2 font-normal text-dark"
+                                  >Demande Rendez-Vous</span
+                                >
+                              </button>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div> -->
+                
+                    <div class="table-responsive">
+                      <table
+                        class="table email-table no-wrap table-hover v-middle mb-0 font-14"
+                      >
+                        <tbody>
+                         
+                          <tr *ngFor="let rv of listeRV">
+                         
+      
+                            <td></td>
+                            <td><i class="fa fa-star text-warning"></i> Date</td>
+      
+                            <td>
+                              <span class="mb-0 text-muted"> {{ rv.date_rv }} </span>
+                            </td>
+      
+                            <td><i class="fa fa-star text-warning"></i> Heure :</td>
+                            <td>
+                              <span class="mb-0 text-muted"> {{ rv.heure }} </span>
+                            </td>
+      
+                            <td><i class="fa fa-star text-warning"></i> Docteur :</td>
+      
+                            <td>
+                              <a
+                                class="btn btn-outline-success"
+                                (click)="showMedecin(rv.medecin.idMedecin)"
+                              >
+                                <span class="text-muted text-dark font-weight-bold">
+                                  {{ rv.medecin.initial }}
+                                </span>
+                              </a>
+                            </td>
+      
+                            <td>
+                              <a
+                                class="btn"
+                                (click)="showMedecin(rv.medecin.idMedecin)"
+                              >
+                                <span
+                                  class="badge badge-pill text-white font-medium badge-danger mr-2"
+                                >
+                                  {{ rv.medecin.specialisation }}
+                                </span>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+            </div>
+            <div class="tab-pane show" id="demanderRV">
+                <div class="row p-3 text-dark">
+                    <div class="col-3"></div>
+      
+                    <div class="col-6 text-center">
+                      <h2 class="font-weight-bold">demander un rendez-Vous</h2>
+      
+                      <form [formGroup]="formMedecin" (ngSubmit)="onSubmit()">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="medecin" class="font-weight-bold"
+                              >Medecin
+                            </label>
+                            <select
+                              id="medecin"
+                              class="form-control"
+                              formControlName="medecin"
+                              name="medecin"
+                              (change)="onSelectMedecin($event.target)"
+                            >
+                              <option
+                                *ngFor="let m of listeMd"
+                                value="{{ m.idMedecin }}"
+                              >
+                                {{ m.initial }} --> {{ m.specialisation }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+      
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-dark">
+                            <i class="fa fa-reply"></i> Envoyer demande
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+      
+                    <div class="col-3"></div>
+                  </div>
+            </div>
+            <div class="tab-pane show" id="drv">
+                <div class="row p-4 no-gutters align-items-center">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6">
+                      <ul class="list-inline dl mb-0 float-left float-md-right">
+                        <li class="list-inline-item text-info mr-3">
+                          <a
+                            id="demanderRV-tab"
+                            data-toggle="tab"
+                            aria-controls="demanderRV"
+                            href="#demanderRV"
+                            role="tab"
+                            aria-selected="false"
+                          >
+                            <button class="btn btn-circle btn-success text-white">
+                              <i class="fa fa-plus"></i>
+                              <span class="ml-2 font-normal text-dark"
+                                >Demande Rendez-Vous</span
+                              >
+                            </button>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              <div class="table-responsive">
+                <table
+                  class="table email-table no-wrap table-hover v-middle mb-0 font-14"
+                >
+                  <tbody>
+                    <!-- row -->
+                    <tr *ngFor="let dm of listDemandeRv">
+                      <ng-container *ngIf="dm.patient.id == patient.id">
+                        <td class="pl-3">
+                          <div class="custom-control">
+                            <span class="mb-0 text-muted"> {{ dm.id }} </span>
+                          </div>
+                        </td>
+
+                        <td><i class="fa fa-star text-warning"></i></td>
+                        <td>
+                          <span class="mb-0 text-muted">
+                            {{ dm.date_demande | date }}
+                          </span>
+                        </td>
+
+                        <td>
+                          <a
+                            class="btn"
+                            (click)="showMedecin(dm.medecin.idMedecin)"
+                          >
+                            <span
+                              class="badge badge-pill text-white font-medium badge-danger mr-2"
+                            >
+                              {{ dm.medecin.specialisation }}
+                            </span>
+                            <span class="text-dark font-weight-bold">
+                              {{ dm.medecin.initial }}
+                            </span>
+                          </a>
+                        </td>
+
+                        <td class="text-muted">
+                          <a>
+                            <button
+                              (click)="delete_demande(dm.id)"
+                              class="btn btn-circle btn-danger text-white"
+                              href="javascript:void(0)"
+                            >
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </a>
+                        </td>
+                      </ng-container>
+                    </tr>
+                    <!-- row -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

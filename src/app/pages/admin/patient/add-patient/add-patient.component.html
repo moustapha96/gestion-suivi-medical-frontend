@@ -1,0 +1,102 @@
+
+
+<div class="container" style="margin-top: 10%;">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Inscription</h5>
+            <div class="card-text">
+                <div class="card border">
+                    <div class="row">
+                        <div class="col-3 ">
+                            <div class="   justify-content-center">
+                                <img src="assets/login/img/login8.jpg" class="img-circle ">
+                            </div>
+                        </div>
+                        <div class="col-8 m-1">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Inscrire un Patient</h1>
+                            </div>
+                            <form class="user" [formGroup]="this.formPatient" (ngSubmit)="onSubmit()">
+                                <div class="form-group row ">
+                                    <div class="col-6">
+                                        <label for="statuprenomt_social">Prenom</label>
+                                        <input type="text" class="form-control form-control-user" formControlName="prenom" id="prenom" placeholder="Votre Prenom">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="nom">Nom</label>
+                                        <input type="text" class="form-control form-control-user" formControlName="nom" id="nom" placeholder="Votre Nom">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-4">
+                                        <label for="genre">Genre</label>
+                                        <select class="form-control form-control-user" aria-placeholder="genre" formControlName="genre" id="genre">
+                                            <option value="Féminin">Féminin</option>
+                                            <option value="Masculin">Masculin</option>
+                                          </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="age">Age: {{ age }} ans</label>
+                                        <input id="age" class="form-control-range  " type="range" [(ngModel)]="age" formControlName="age" name="age" min="15" max="100">
+                                    </div>
+
+                                    <div class="col-4">
+
+                                        <label for="taille">Taille:  {{ taille }} cm</label>
+                                        <input id="taille" class="form-control-range " type="range" [(ngModel)]="taille" formControlName="taille" name="taille" min="100" max="250">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-6">
+                                        <label for="adresse">Adresse</label>
+                                        <input type="text" class="form-control form-control-user" formControlName="adresse" id="adresse" placeholder="adresse">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="nom">TEL</label>
+                                        <input type="text" pattern="[0-9],{9}" class="form-control form-control-user" formControlName="tel" id="tel" placeholder="Votre TEL">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <label for="profession">Profession</label>
+                                        <input type="text" class="form-control form-control-user" formControlName="profession" id="profession" placeholder="Votre Profession">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="statut_social">Statut Social</label>
+                                        <select id="statut_social" class="custom-select" formControlName="statut_social" name="statut_social">
+                                        <option  value="marié" >Marié(e)</option>
+                                        <option   value="celibataire">Célibataire</option>
+                                        <option   value="divrocé">divorcé(e)</option>
+                                        <option   value="veuf">veuf(ve)</option>
+                                  </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control form-control-user" id="email" formControlName="email" placeholder="Votre Email">
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="password">Mot de passe</label>
+                                        <input type="password" class="form-control form-control-user" id="password" formControlName="password" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="Repeat Password"></label>
+                                        <input type="password" class="form-control form-control-user" id="pwdd" formControlName="pwdd" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block">S'inscrire</button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" [routerLink]="['/login']" routerLinkActive="router-link-active">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

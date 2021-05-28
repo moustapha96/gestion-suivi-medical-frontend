@@ -1,0 +1,55 @@
+<div class="col-xl-12">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-actions float-right">
+        <div class="show">
+          <a data-display="static">
+            <i
+              class="fa fa-window-close fa-2x"
+              style="color: red"
+              (click)="close()"
+              aria-hidden="true"
+            ></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right"></div>
+        </div>
+      </div>
+      <h2 class="card-title mb-0"></h2>
+    </div>
+    <div class="card">
+      <form (ngSubmit)="onSubmit()">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="titre" [(ngModel)]="titre"
+              id="titre"
+              aria-describedby="helpId"
+              placeholder="le titre "
+            />
+            <small id="helpId" class="form-text text-muted">Help text</small>
+          </div>
+          <div class="form-group">
+            <label for="my-textarea">Message</label>
+            <textarea
+              id="my-textarea" [(ngModel)]="message"
+              class="form-control"
+              name="message"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div  class="text-center" >
+            <button type="submit" class="btn btn-primary  btn-block full">
+                  enregistrer
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

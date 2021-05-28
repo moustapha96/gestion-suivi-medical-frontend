@@ -1,0 +1,159 @@
+<div class="container card" style="margin-top: 15%" >
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+     
+      <div class="my-4">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="false"
+              >Profile</a
+            >
+          </li>
+        </ul>
+        <form class="user" [formGroup]="this.formPatient" (ngSubmit)="onSubmit()" >
+          
+          <hr class="my-4" />
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="firstname">Prenom</label>
+              <input
+                type="text"
+                id="prenom" value="{{ patient.prenom}} "
+                class="form-control" formControlName="prenom"
+                placeholder="Brown" name="prenom"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastname">Nom</label>
+              <input
+                type="text"
+                id="nom" value="{{ patient.nom}} "
+                class="form-control" formControlName="nom"
+                placeholder="Asher" name="nom"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input
+              type="email" value="{{  patient.user.email}} "
+              class="form-control" formControlName="email"
+              id="email" value="email" name="email"
+              placeholder="brown@asher.me"
+            />
+          </div>
+          <div class="row">
+
+            <div class="form-group col-4">
+              <label for="inputAddress5">Address</label>
+              <input
+                type="text" value="{{  patient.adresse}} "
+                class="form-control" formControlName="adresse"
+                id="adresse" name="adresse"
+                placeholder="P.O. Box 464, 5975 Eget Avenue"
+              />
+            </div>
+            <div class="form-group col-4">
+              <label for="inputAddress5">Profession</label>
+              <input type="text" class="form-control" id="profession"  value="{{  patient.profession }} "
+              formControlName="profession" placeholder="P.O. Box 464, 5975 Eget Avenue" name="profession" />
+            </div>
+            <div class="form-group col-4">
+              <label for="inputAddress5">statut Social</label>
+              <select id="statut_social" class="custom-select" formControlName="statut_social" name="statut_social">
+                <option  value="marié" >Marié(e)</option>
+                <option   value="celibataire">Célibataire</option>
+                <option   value="divrocé">divorcé(e)</option>
+                <option   value="veuf">veuf(ve)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="tel">Tel</label>
+              <input
+                type="text" value="{{ patient.tel }} "
+                class="form-control" formControlName="tel"
+                id="tel" name="tel"
+                placeholder="numero TEL"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="genre">Genre</label>
+              <select id="genre" class="form-control"  name="genre" formControlName="genre" >
+                <option selected="">Choose...</option>
+                <option  value="Féminin" > féminin </option>
+                <option value="Masculin" >Masculin</option>
+              </select>
+            </div>
+            
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="age">Age  {{  patient.age }} </label>
+              <input id="age" class="form-control-range" value="{{  patient.age }}" 
+              formControlName="age" type="range"  name="age" min="15" max="100">
+            </div>
+            
+            <div class="form-group col-md-6">
+              <label for="taille">taille {{  patient.taille }} " </label>
+              <input id="taille" class="form-control-range" value="{{ patient.taille}} " 
+              formControlName="taille" type="range" name="taille" min="100" max="250">
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputPassword4">Old Password</label>
+                <input
+                  type="password" value="{{  patient.user.password }} "
+                  class="form-control" formControlName="oldPassword"
+                  id="oldPassword" name="oldPassword"
+                />
+              </div>
+              <div class="form-group">
+                <label for="inputPassword5">New Password</label>
+                <input
+                  type="password" formControlName="newPassword"
+                  class="form-control"
+                  id="newpp" name="newPassword"
+                />
+              </div>
+              <div class="form-group">
+                <label for="inputPassword6">Confirm Password</label>
+                <input
+                  type="password" formControlName="ConfiPassword"
+                  class="form-control"
+                  id="conpp" name="ConfiPassword" 
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-2">Password requirements</p>
+              <p class="small text-muted mb-2">
+                To create a new password, you have to meet all of the following
+                requirements:
+              </p>
+              <ul class="small text-muted pl-4 mb-0">
+                <li>Minimum 8 character</li>
+                <li>At least one special character</li>
+                <li>At least one number</li>
+                <li>Can’t be the same as a previous password</li>
+              </ul>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save Change</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

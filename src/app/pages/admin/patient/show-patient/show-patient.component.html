@@ -1,0 +1,66 @@
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-actions float-right">
+                <div class="show">
+                    <a   data-display="static">
+                        <i class="fa fa-window-close fa-2x"  style="color: red"  (click)="close()" aria-hidden="true"></i>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                    </div>
+                </div>
+            </div>
+            <h5 class="card-title mb-0">{{  data.user.role }} </h5>
+        </div>
+        <div class="card-body ">
+            <div class="row g-0 ">
+                <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64" class="rounded-circle mt-2" alt="Angelica Ramos">
+                </div>
+                <div class="col-sm-9 col-xl-12 col-xxl-9">
+                    <strong>{{  data.prenom }} {{ data.nom }} </strong>
+                    <br>
+                    <p>  {{ data.profession }} </p>
+                </div>
+            </div>
+
+            <table class="table table-sm mt-2 mb-4">
+                <tbody>
+                    <tr>
+                        <th>Prenom </th>
+                        <td>{{ data.prenom}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom </th>
+                        <td>{{ data.nom }} </td>
+                    </tr>
+                    <tr>
+                        <th> Adresse </th>
+                        <td>{{ data.adresse }}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Genre</th>
+                        <td> {{ data.genre }} </td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td> {{  data.user.email }} </td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>  {{ data.tel }}  </td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td><span class="badge bg-success">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+           
+
+        </div>
+    </div>
+</div>

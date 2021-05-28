@@ -1,0 +1,65 @@
+<div class="col-xl-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header text-center">
+          Ajouter une consultation
+        </div>
+        <div class="card-actions row">
+
+          <div class="col-6">
+            <h3> {{  patient.prenom }} {{  patient.nom }} </h3>
+          </div>
+
+          <div class="col-6 ">
+            <a data-display="static">
+              <i
+                class="fa fa-window-close fa-2x float-right"
+                style="color: red"
+                (click)="close()"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </div>
+
+        
+        </div>
+
+
+        <h2 class="card-title mb-0"></h2>
+      </div>
+      <div class="card">
+        <form (ngSubmit)="saveConsultation()">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="">Diagnostic</label>
+              <textarea
+                type="text"
+                class="form-control"
+                name="titre" [(ngModel)]="diagnostic"
+                id="titre"
+                aria-describedby="helpId"
+                placeholder="le diagnostic "
+              ></textarea>
+              </div>
+            <div class="form-group">
+              <label for="my-textarea">Traitement</label>
+              <textarea
+                id="my-textarea" [(ngModel)]="traitement"
+                class="form-control"
+                name="message" placeholder="le traitement préinscrit">
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div  class="text-center" >
+              <button type="submit" class="btn btn-primary  btn-block full">
+                    enregistrer
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

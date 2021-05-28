@@ -1,0 +1,159 @@
+
+<div class="container"  style="margin-top : 15%" >
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="card">
+                <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                    <h2 class="text-white pb-3">Liste de vos Rendez-Vous </h2>
+                    <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" 
+                                    role="tab" aria-selected="true">
+                                <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                <span class="d-none d-md-block"> vos Rendez-Vous</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sent-tab" data-toggle="tab" aria-controls="sent" href="#sent" 
+                                role="tab" aria-selected="false">
+                                <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                <span class="d-none d-md-block">Vos Demande de Rendez-Vous</span>
+                            </a>
+                        </li>
+                       
+                       
+                    </ul>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                        <div>
+                            <div class="row p-4 no-gutters align-items-center">
+                                <div class="col-sm-12 col-md-6">
+                                   
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                   
+                                </div>
+                            </div>
+                            <!-- Mail list-->
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+                                        <!-- row -->
+                                        <tr  *ngFor="let rv of listRendezVous" >
+                                         
+                                             <ng-container  *ngIf="rv.medecin.idMedecin == medecin.idMedecin" >
+
+
+                                                 <td class="pl-3">
+                                                     <div class="custom-control ">
+                                                        <span class="mb-0 text-muted">  {{ rv.medecin.specialisation }}</span>
+                                                        
+                                                     </div>
+                                                 </td>
+                                                
+                                                 <td><i class="fa fa-star text-warning"></i></td>
+                                                 <td>
+                                                     <span class="mb-0 text-muted"> {{ rv.date_rv }} - {{ rv.heure }} </span>
+                                                 </td>
+                                                 
+                                                 <td>
+                                                     <a class="btn"  (click)="goToDeatilPatient(rv.patient.id)" >
+                                                         <span class="badge badge-pill text-white font-medium badge-success ">
+                                                             {{ rv.patient.prenom  }} {{ rv.patient.nom  }}
+                                                         </span>
+                                                         <span class="text-dark font-weight-bold ml-2 ">age :  {{ rv.patient.age  }} </span>
+                                                     </a>
+                                                 </td>
+                                                
+                                                 <td class="text-muted">
+                                                   
+                                                     <a  (click)="deleteRv(rv.idRendezVous) " >
+                                                         <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
+                                                             <i class="fa fa-trash"></i>
+                                                         </button>
+                                                        
+                                                     </a>
+                                                 </td>
+                                             </ng-container>
+                                             
+                                          
+                                           
+                                        </tr>
+                                        <!-- row -->
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
+                        <div>
+                           
+                            <div class="table-responsive">
+                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                    <tbody>
+                                        <!-- row -->
+                                        <tr  *ngFor="let dm of listeDemande" >
+                                         
+                                             <ng-container  *ngIf="dm.medecin.idMedecin == medecin.idMedecin" >
+
+
+                                                 <td class="pl-3">
+                                                     <div class="custom-control ">
+                                                        <span class="mb-0 text-muted">  {{ dm.id }} </span>
+                                                        
+                                                     </div>
+                                                 </td>
+                                                
+                                                 <td><i class="fa fa-star text-warning"></i></td>
+                                                 <td>
+                                                     <span class="mb-0 text-muted"> {{ dm.date_demande  | date }} </span>
+                                                 </td>
+                                                 
+                                                 <td>
+                                                     <a class="btn"  (click)="goToDeatilPatient(dm.patient.id)" >
+                                                         <span class="badge badge-pill text-white font-medium badge-danger mr-2">
+                                                             {{ dm.patient.prenom }} {{ dm.patient.nom }}
+                                                         </span>
+                                                         <span class="text-dark font-weight-bold"> {{  dm.patient.age }} </span>
+                                                     </a>
+                                                 </td>
+                                                
+                                                 <td class="text-muted">
+                                                    <a   (click)="fixerRv(dm.patient.id) " >
+                                                        <button class="btn btn-circle btn-success text-white" >
+                                                            <i class="fa fa-clock-o"></i>fixer RV
+                                                        </button>
+                                                       
+                                                    </a>
+                                                </td>
+                                                    <td class="text-muted">
+                                                             <a (click)="deleteDemandeRv(dm.id)" >
+                                                                <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                               
+                                                            </a>
+                                                 </td>
+                                             </ng-container>
+                                             
+                                          
+                                           
+                                        </tr>
+                                        <!-- row -->
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

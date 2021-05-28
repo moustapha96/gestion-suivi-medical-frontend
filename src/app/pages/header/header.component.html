@@ -1,0 +1,108 @@
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    <h1 class="logo mr-auto"><a>GSMP</a></h1>
+
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+
+        <li class="active"> <a [routerLink]="['/bienvenue']" routerLinkActive="router-link-active" >Accueil</a></li>
+        <ng-container *ngIf="this.userService.patient == true && this.userService.islogin == true">
+          <li class="drop-down" > <a [routerLink]="['/patient/accueil']" routerLinkActive="router-link-active" >Rendez-Vous</a >
+              <ul>
+                <li><a  [routerLink]="['/patient/liste-rv']" routerLinkActive="router-link-active"  >vos RV</a></li>
+              </ul>
+          </li>
+          <li > <a [routerLink]="['/patient/memos']" routerLinkActive="router-link-active" >Pub</a> </li>
+          <li > <a [routerLink]="['/patient/dm']" routerLinkActive="router-link-active" >Dossier Médical</a > </li>
+          <li > <a [routerLink]="['/patient/profil']" routerLinkActive="router-link-active" >Profil</a > </li>
+           
+        </ng-container>
+        <ng-container *ngIf="this.userService.assistant == true && this.userService.islogin == true">
+          <li><a  [routerLink]="['/assistant/rendez-vous']" routerLinkActive="router-link-active" >Rendez-Vous</a ></li>
+            <li><a  [routerLink]="['/assistant/memos']" routerLinkActive="router-link-active" >Pub</a ></li>
+            <li><a  [routerLink]="['/assistant/profil']" routerLinkActive="router-link-active" >profil</a ></li>
+        </ng-container>
+        <ng-container *ngIf="this.userService.medecin == true && this.userService.islogin == true">
+            <li class="drop-down" > <a  routerLinkActive="router-link-active" >Rendez-Vous</a >
+              <ul>
+                <li><a  [routerLink]="['/medecin/rvs']" routerLinkActive="router-link-active">gestion RV</a></li>
+              </ul>
+          </li>
+
+          <li> <a  [routerLink]="['/medecin/memos']" routerLinkActive="router-link-active" >Pub</a ></li>
+          <li> <a  [routerLink]="['/medecin/patients']" routerLinkActive="router-link-active" >Patient</a ></li>
+          <li> <a  [routerLink]="['/medecin/assistants']" routerLinkActive="router-link-active" >Assistant</a ></li>
+          <li> <a  [routerLink]="['/medecin/profil']" routerLinkActive="router-link-active" >profil</a ></li>
+        </ng-container>
+  
+        <ng-container *ngIf="this.userService.admin == true && this.userService.islogin == true">
+        
+            <!-- <li class="drop-down">  <a [routerLink]="['admin/accueil']" routerLinkActive="router-link-active"  > admin </a >
+            <ul>
+                <li><a href="#">ajouter</a></li>
+                <li><a href="#">Liste</a></li>
+            </ul>
+          </li> -->
+            <!-- <li> <a [routerLink]="['admin/list-notification']" routerLinkActive="router-link-active"  > Notification</a > </li> -->
+            <li>  <a [routerLink]="['admin/list-rv']" routerLinkActive="router-link-active"  > Rendez-Vous</a > </li>
+            <li class="drop-down" >  <a [routerLink]="['admin/accueil']" routerLinkActive="router-link-active"  > Pub</a > 
+              <ul>
+                  <li><a [routerLink]="['/admin/add-memos']" routerLinkActive="router-link-active"  >ajouter</a></li>
+                  <li><a [routerLink]="['/admin/list-memos']" routerLinkActive="router-link-active">Liste</a></li>
+              </ul>
+            </li>
+            <li class="drop-down" > <a [routerLink]="['admin/list-dm']" routerLinkActive="router-link-active"  > Dossier Médical </a > 
+              <ul>
+                 <li><a [routerLink]="['/admin/list-dm']" routerLinkActive="router-link-active">Liste</a></li>
+              </ul>
+            </li>
+              <li class="drop-down">
+                <a href="">utilisateur</a>
+                <ul>
+                  <li class="drop-down">  <a [routerLink]="['admin/accueil']" routerLinkActive="router-link-active"  > patient </a >
+                    <ul>
+                        <li><a [routerLink]="['/admin/add-patient']" routerLinkActive="router-link-active">ajouter</a></li>
+                        <li><a [routerLink]="['/admin/list-patient']" routerLinkActive="router-link-active">Liste</a></li>
+                    </ul>
+                  </li>
+                  <li class="drop-down">  <a [routerLink]="['admin/accueil']" routerLinkActive="router-link-active"  > Assistant </a >
+                    <ul>
+                        <li><a [routerLink]="['/admin/add-assistant']" routerLinkActive="router-link-active">ajouter</a></li>
+                        <li><a [routerLink]="['/admin/list-assistant']" routerLinkActive="router-link-active">Liste</a></li>
+                    </ul>
+                  </li>
+                  <li class="drop-down">  <a [routerLink]="['admin/accueil']" routerLinkActive="router-link-active"  > Medecin </a >
+                    <ul>
+                        <li><a [routerLink]="['/admin/add-medecin']" routerLinkActive="router-link-active">ajouter</a></li>
+                        <li><a [routerLink]="['/admin/list-medecin']" routerLinkActive="router-link-active">Liste</a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+              </li>
+           
+            <li> <a [routerLink]="['admin/parametre']" routerLinkActive="router-link-active"  >Parametre </a ></li>
+           
+        </ng-container>
+       
+        <ng-container *ngIf="this.userService.islogin == false"  >
+
+            <li><a  [routerLink]="['/contact']" >Nous Contact</a></li>
+            <li>  <a  class="link" [routerLink]="['/inscription']"  routerLinkActive="router-link-active"> S'inscrire </a> </li>
+        </ng-container>
+               
+      </ul>
+    </nav>
+
+    <ng-container *ngIf="this.userService.islogin == true ">
+      <li class="drop-down">   <a class="appointment-btn scrollto" (click)="logOut()" >Se déconnecter</a>  </li>
+    </ng-container>
+    <ng-container   *ngIf="this.userService.islogin == false ">
+      <li class="drop-down"> <a [routerLink]="['/login']" class="appointment-btn scrollto">Se connecter</a> </li>
+    </ng-container>
+
+    </div>
+</header>
+

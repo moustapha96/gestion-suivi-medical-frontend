@@ -1,0 +1,98 @@
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+<div class="container" style="margin-top: 15%" >
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <div class="row align-items-center">
+            <div class="col-lg-5">
+              <div class="resume-base bg-primary user-dashboard-info-box p-4">
+                <div class="profile">
+                  <div class="jobster-user-info">
+                    <div class="profile-avatar">
+                      <img class="img-fluid " src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                    </div>
+                    <div class="profile-avatar-info mt-3">
+                      <h5 class="text-white"> {{patient.nom }} {{ patient.prenom }}  </h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="about-candidate border-top">
+                  <div class="candidate-info">
+                    <h6 class="text-white">Nom :</h6>
+                    <p class="text-white"> {{ patient.nom }} </p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Prenom :</h6>
+                    <p class="text-white">{{ patient.prenom }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Email:</h6>
+                    <p class="text-white">{{ patient.user.email }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Phone :</h6>
+                    <p class="text-white"> {{ patient.tel }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Genre : </h6>
+                    <p class="text-white">{{ patient.genre }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Adresse :</h6>
+                    <p class="text-white"> {{ patient.adresse }} </p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Profession :</h6>
+                    <p class="text-white">{{ patient.profession }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Age :</h6>
+                    <p class="text-white">{{ patient.age }}</p>
+                  </div>
+                  <div class="candidate-info">
+                    <h6 class="text-white">Taille :</h6>
+                    <p class="text-white">{{ patient.taille }}</p>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="resume-experience">
+                <div class="timeline-box"  *ngFor="let d of dm"  >
+                  <h3 class="resume-experience-title">Medecin  : {{ d.medecin.initial }}  </h3>
+                  <div class="jobster-candidate-timeline">
+                    <div class="jobster-timeline-item" *ngFor="let c of d.consultations" >
+                      <div class="jobster-timeline-cricle">
+                        <i class="far fa-circle"></i>
+                      </div>
+
+                      <div class="jobster-timeline-info"   >
+                       
+                        <div class="dashboard-timeline-info">
+
+                         
+                          <p class="mt-2">  <span class="jobster-timeline-time">Date consultation  </span> {{ c.date_consultation | date }} </p>
+                          
+                          <span>- Diqgnostic  </span>
+                          <p class="mt-2"> {{c.traitement}} </p>
+                          <span>- Traitement  </span>
+                          <p class="mt-2"> {{c.traitement}} </p>
+                        </div>
+                      </div>
+
+                    </div>
+                   
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

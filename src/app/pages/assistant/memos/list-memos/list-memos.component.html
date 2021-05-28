@@ -1,0 +1,50 @@
+
+
+<div class="container" style="margin-top: 15%;" >
+    <div class="col-md-12 col-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Publication </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <tbody><tr>
+                  <th class="text-center">
+                    <div class="custom-checkbox custom-checkbox-table custom-control">
+                      <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                      <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                    </div>
+                  </th>
+                  <th>Médecin</th>
+                  <th>titre</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+                <tr *ngFor="let memo of listMemo" >
+                  <td class="p-0 text-center">
+                    <div class="custom-checkbox custom-control">
+                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+                      <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                    </div>
+                  </td>
+                  <td>  <a  (click)="showMedecin(memo.medecin.idMedecin)" class="btn-outline"> {{memo.medecin.initial }} </a></td>
+    
+                  <td class="align-middle">
+                  
+                            {{ memo.titre }}
+                   
+                  </td>
+                  <td>  {{ memo.date_creer | date}} </td>
+                  <td>
+                    <a class="btn btn-outline-success btn-action mr-1"  (click)="ShowMemo(memo.idMemos ) " >
+                        <i class="fa fa-eye"></i></a>
+                   </td>
+                </tr>
+               
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

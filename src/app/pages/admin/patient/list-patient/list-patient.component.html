@@ -1,0 +1,125 @@
+<div class="container" style="margin-top:10%" >
+    <div class="container-fluid p-0">
+		<h1 class="h3 mb-3">Patient</h1>
+		<div class="row">
+			<div class="col-xl-8">
+				<div class="card">
+					<div class="card-header pb-0">
+						<!-- <div class="card-actions float-right">
+						
+						</div> -->
+						<h5 class="card-title mb-0">Liste des Patients</h5>
+						
+					</div>
+					<div class="card-body">
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+                                    <th>Nom </th>
+									<th>prenom</th>
+									<th>email</th>
+									<th>genre</th>
+									<th>détail</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  *ngFor="let p of liste_patient;index as i"  (click)="onShowPatient(p.id)"   >
+									<td>{{ p.nom  }}</td>
+									<td>{{ p.prenom }}</td>
+									<td>{{ p.user.email }} </td>
+									<td>{{ p.genre }}</td>
+									<td>  <a   (click)="onShowPatient(p.id)" class="btn btn-outline-dark"> 
+										 <i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-4">
+				<div class="card"  *ngIf="patient != null" >
+					<div class="card-header">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+								</a>
+
+								
+							</div>
+						</div>
+						<h5 class="card-title mb-0"> {{ patient.prenom }} </h5>
+					</div>
+					<div class="card-body">
+						<div class="row g-0">
+							<div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64" class="rounded-circle mt-2" alt="Angelica Ramos">
+							</div>
+							<div class="col-sm-9 col-xl-12 col-xxl-9">
+								<strong>à propos {{ patient.prenom }} {{ patient.nom }} </strong>
+								
+							</div>
+						</div>
+
+						<table class="table table-sm mt-2 mb-4">
+							<tbody>
+								<tr>
+									<th>Prenom</th>
+									<td> {{ patient.prenom }} </td>
+								</tr>
+								<tr>
+									<th>nom</th>
+									<td> {{ patient.nom }}</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td> {{ patient.user.email }} </td>
+								</tr>
+								<tr>
+									<th>TEL</th>
+									<td> {{patient.tel }} </td>
+								</tr>
+								<tr>
+									<th>Adresse</th>
+									<td> {{ patient.adresse }} </td>
+								</tr>
+								<tr>
+									<th>Age</th>
+									<td>  {{patient.age}} </td>
+								</tr>
+								<tr>
+									<th>Taille</th>
+									<td>  {{ patient.taille}}</td>
+								</tr>
+								<tr>
+									<th>profession</th>
+									<td>  {{ patient.profession}}</td>
+								</tr>
+								<tr>
+									<th>Genre</th>
+									<td>{{ patient.genre }} </td>
+								</tr>
+								<tr>
+									<th>Situation Matrimonial</th>
+									<td> {{ patient.statut_social }} </td>
+								</tr>
+								<tr>
+									<th>Status</th>
+									<td><span class="badge bg-success">Active</span></td>
+								</tr>
+							</tbody>
+						</table>
+
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+

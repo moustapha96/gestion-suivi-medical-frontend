@@ -1,0 +1,123 @@
+<div class="container" style="margin-top:10%" >
+    <div class="container-fluid p-0">
+		<h1 class="h3 mb-3">Medecins</h1>
+		<div class="row">
+			<div class="col-xl-8">
+				<div class="card">
+					<div class="card-header pb-0">
+						<!-- <div class="card-actions float-right">
+						
+						</div> -->
+						<h5 class="card-title mb-0">liste des médecins</h5>
+						<a  [routerLink]="[ '/admin/add-medecin' ]" routerLinkActive="active" class="btn btn-sm btn-success text-white pull-right">
+							<i class="fa fa-plus"></i>Nouveau medecin </a>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Prenom </th>
+									<th>nom</th>
+									<th>Email</th>
+									<th>détail</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  *ngFor="let md of liste_medecin;index as i" >
+									<td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+									<td>{{md.initial }}</td>
+									<td>{{ md.prenom }} </td>
+									<td>{{ md.user.email }}</td>
+									<td><a (click)="showMedecin(md.idMedecin)"
+										 class="btn btn-outline-dark btn-sm"> <i class="fa fa-eye" ></i> </a></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-4">
+				<div class="card"  *ngIf="medecin != null" >
+					<div class="card-header">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+								</a>
+
+								
+							</div>
+						</div>
+						<h5 class="card-title mb-0"> {{ medecin.prenom }} </h5>
+					</div>
+					<div class="card-body">
+						<div class="row g-0">
+							<div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64" class="rounded-circle mt-2" alt="Angelica Ramos">
+							</div>
+							<div class="col-sm-9 col-xl-12 col-xxl-9">
+								<strong>à propos {{ medecin.prenom }} {{ medecin.nom }} </strong>
+								
+							</div>
+						</div>
+
+						<table class="table table-sm mt-2 mb-4">
+							<tbody>
+								<tr>
+									<th>initial</th>
+									<td> {{ medecin.initial }} </td>
+								</tr>
+								<tr>
+									<th>Prenom & nom</th>
+									<td> {{ medecin.prenom }} {{ medecin.nom }}</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td> {{ medecin.user.email }} </td>
+								</tr>
+								<tr>
+									<th>Spécialisation</th>
+									<td> {{ medecin.specialisation }} </td>
+								</tr>
+								<tr>
+									<th>TEL</th>
+									<td> {{medecin.tel }} </td>
+								</tr>
+								<tr>
+									<th>Adresse</th>
+									<td> {{ medecin.adresse }} </td>
+								</tr>
+								<tr>
+									<th>Age</th>
+									<td>  {{medecin.age}} </td>
+								</tr>
+								<tr>
+									<th>N°Licence</th>
+									<td>  {{medecin.num_licence}} </td>
+								</tr>
+								
+								
+								<tr>
+									<th>Genre</th>
+									<td>{{ medecin.genre }} </td>
+								</tr>
+								
+								<tr>
+									<th>Status</th>
+									<td><span class="badge bg-success">Active</span></td>
+								</tr>
+							</tbody>
+						</table>
+
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

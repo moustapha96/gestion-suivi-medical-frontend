@@ -1,0 +1,192 @@
+<div class="container" style="margin-top: 10%">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3">Patients</h1>
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-header pb-0">
+            <!-- <div class="card-actions float-right">
+						
+						</div> -->
+            <h3 class="card-title mb-0">Liste des Patients</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>prenom</th>
+                  <th>email</th>
+                  <th>genre</th>
+                  <th>DM</th>
+                  <th>RV</th>
+                  <th>Consultation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of liste_patient; index as i">
+                  <td>{{ p.nom }}</td>
+                  <td>{{ p.prenom }}</td>
+                  <td>{{ p.user.email }}</td>
+                  <td>{{ p.genre }}</td>
+                  <td>
+                    <a
+                      (click)="goToDeatilPatient(p.id)"
+                      class="btn btn-outline-success"
+                    >
+                      <i class="fa fa-medkit" aria-hidden="true"></i>
+                    </a>
+                  </td>
+                  <td class="text-muted">
+                    <a (click)="fixerRv(p.id)">
+                      <button class="btn btn-outline-success ">
+                        <i class="fa fa-clock-o"></i>
+                      </button>
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      (click)="addConsultation(p.id)"
+                      class="btn btn-outline-dark"
+                    >
+                      <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card" *ngIf="patient != null">
+          <div class="card-header">
+            <div class="card-actions float-right">
+              <div class="dropdown show">
+                <a href="#" data-toggle="dropdown" data-display="static"> </a>
+              </div>
+            </div>
+            <h5 class="card-title mb-0">Patient N° :  {{ patient.id + 1 }}{{ patient.age }} </h5>
+          </div>
+          <div class="card-body">
+            <div class="row g-0">
+              <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+                <img
+                  src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                  width="64"
+                  height="64"
+                  class="rounded-circle mt-2"
+                  alt="Angelica Ramos"
+                />
+              </div>
+              <div class="col-sm-9 col-xl-12 col-xxl-9">
+                <strong
+                  >à propos {{ patient.prenom }} {{ patient.nom }}
+                </strong>
+              </div>
+            </div>
+
+            <table  datatable class="row-border hover" class="table table-sm mt-2 mb-4">
+              <tbody>
+                <tr>
+                  <th>Prenom</th>
+                  <td>{{ patient.prenom }}</td>
+                </tr>
+                <tr>
+                  <th>nom</th>
+                  <td>{{ patient.nom }}</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>{{ patient.user.email }}</td>
+                </tr>
+                <tr>
+                  <th>TEL</th>
+                  <td>{{ patient.tel }}</td>
+                </tr>
+                <tr>
+                  <th>Adresse</th>
+                  <td>{{ patient.adresse }}</td>
+                </tr>
+                <tr>
+                  <th>Age</th>
+                  <td>{{ patient.age }}</td>
+                </tr>
+                <tr>
+                  <th>Taille</th>
+                  <td>{{ patient.taille }}</td>
+                </tr>
+                <tr>
+                  <th>profession</th>
+                  <td>{{ patient.profession }}</td>
+                </tr>
+                <tr>
+                  <th>Genre</th>
+                  <td>{{ patient.genre }}</td>
+                </tr>
+                <tr>
+                  <th>Situation Matrimonial</th>
+                  <td>{{ patient.statut_social }}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td><span class="badge bg-success">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <ng-container *ngFor="let dm of dms">
+              <ng-container *ngIf="patient.id == dm.patient.id">
+                <div class="row gutters-sm">
+                  <div
+                    class="col-sm-6 mb-3"
+                    *ngFor="let con of dm.consultations"
+                  >
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h2 class="d-flex mb-3">
+                          <i class="material-icons text-info mr-2"
+                            >consultation :
+                          </i>
+                          {{ con.date_consultation | date }}
+                        </h2>
+
+                        <div class="form-group">
+                          <label for=""> Dignostique </label>
+                          <textarea
+                            class="form-control"
+                            name=""
+                            id=""
+                            disabled
+                            rows="2"
+                          >
+							 {{ con.diagnostic }} </textarea
+                          >
+                        </div>
+
+                        <div class="form-group">
+                          <label for=""> Traitement </label>
+                          <textarea
+                            class="form-control"
+                            name=""
+                            id=""
+                            disabled
+                            rows="3"
+                          >
+							 {{ con.traitement }} </textarea
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

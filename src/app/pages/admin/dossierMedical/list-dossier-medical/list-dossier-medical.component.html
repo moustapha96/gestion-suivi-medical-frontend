@@ -1,0 +1,46 @@
+<div class="container" style="margin-top: 10%">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Dossier Médical </h5>
+      <div class="card-text">
+        <table class="table table-striped" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Medecin</th>
+              <th>patient</th>
+              <th>date creation</th>
+              <th>consultation</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dm of liste_dm; index as i">
+              <td>{{ dm.medecin.initial }}</td>
+              <td>{{ dm.patient.nom }}</td>
+
+              <td>{{ dm.date_creation | date }}</td>
+              <td>
+                <table class="table table-light">
+                  <thead>
+                    <tr>
+                      <th>date</th>
+                      <th>Diagnostic</th>
+					  <th>Traitement</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let c of dm.consultations">
+                      <td>{{ c.date_consultation }}</td>
+                      <td>{{ c.diagnostic }}</td>
+                      <td>{{ c.traitement }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
